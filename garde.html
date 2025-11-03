@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liste de Garde - EPH Tagzait Abdel Kader</title>
+<style>
+  /* --- Style général --- */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0b132b, #1c2541);
+    color: #f5f6fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    width: 100%;
+    background: rgba(15, 25, 45, 0.9);
+    text-align: center;
+    padding: 30px 10px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  }
+
+  header h1 {
+    font-size: 1.8em;
+    color: #00a8e8;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+
+  main {
+    width: 90%;
+    max-width: 900px;
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 168, 232, 0.2);
+    text-align: center;
+  }
+
+  .selection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  select {
+    background: #1c2541;
+    color: #f5f6fa;
+    border: 1px solid #00a8e8;
+    padding: 10px 15px;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  select:focus {
+    box-shadow: 0 0 10px #00a8e8;
+  }
+
+  button {
+    background: #00a8e8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    background: #007ea7;
+    box-shadow: 0 0 10px #00a8e8;
+  }
+
+  #photoGarde {
+    margin-top: 30px;
+    display: none;
+  }
+
+  #photoGarde img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 168, 232, 0.2);
+  }
+
+  footer {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+    color: #888;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Établissement Public Hospitalier Tagzait Abdel Kader - Tipaza</h1>
+</header>
+
+<main>
+  <div class="selection">
+    <select id="specialite">
+      <option value="">-- Choisir une spécialité --</option>
+      <option value="medecin-generaliste">medecin-generaliste</option>
+      <option value="radiologie">Radiologie</option>
+      <option value="cardiologie">Cardiologie</option>
+      <option value="resident-cardiologie">resident-Cardiologie</option>   
+      <option value="medecine-interne">Medecine-interne</option>
+      <option value="resident-medecine-interne">resident-Medecine-interne</option>
+      <option value="chirurgie-generale">Chirurgie-generale</option>
+      <option value="anesthesie">anesthesie-rea</option>
+      <option value="gynecologie">Gynecologie</option>
+      <option value="pediatrie">Pediatrie</option>
+      <option value="cci">cci</option>
+      <option value="psychaterie">psychaterie</option>
+      <option value="neurochirurgie">neurochirurgie</option>
+      <option value="orthopedie">orthopedie</option>
+      <option value="nephrologie">nephrologie</option>
+      <option value="ophtalmologie">pneumo-ophtalmo</option>
+      <option value="reeducation">reeducation</option>
+      <option value="EPH">directeurdegrade</option>
+    </select>
+    <button onclick="afficherPhoto()">Afficher la garde</button>
+  </div>
+
+  <div id="photoGarde">
+    <img id="imageGarde" src="" alt="Liste de garde">
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 EPH Tagzait Abdel Kader - Tipaza | Liste de Garde
+</footer>
+
+<script>
+function afficherPhoto() {
+  const specialite = document.getElementById("specialite").value;
+  const photoDiv = document.getElementById("photoGarde");
+  const img = document.getElementById("imageGarde");
+
+  if (!specialite) {
+    photoDiv.style.display = "none";
+    alert("Veuillez choisir une spécialité !");
+    return;
+  }
+
+  // chemin de l'image (dans le dossier "gardes")
+  const chemin = "gardes/" + specialite + ".jpg";
+  img.src = chemin;
+  img.alt = "Liste de garde - " + specialite;
+  photoDiv.style.display = "block";
+}
+</script>
+
+</body>
+</html>
